@@ -31,9 +31,9 @@ You can search through all the IMDB tags on [this page](https://imdb.to/2H0PGVs)
 
 ## Sorting Tag Lists
 
-You can also sort these lists, supported sorting tags: popular, new, rating, alphabetical, votes, longest, shortest, yearDesc, yearAsc
+You can also sort these lists, supported sorting tags: `popular`, `new`, `rating`, `alphabetical`, `votes`, `longest`, `shortest`, `yearDesc`, `yearAsc`
 
-The default sorting is: popular
+The default sorting is: `popular`
 
 To get a list of sorted items, use: `https://stremio-imdb-tag.now.sh/[imdb-tag]/[sorting-tag]/manifest.json`
 
