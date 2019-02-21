@@ -181,6 +181,4 @@ app.get('/:tagId/:sort?/catalog/:type/:id.json', (req, res) => {
 		fail('Unknown request parameters')
 })
 
-app.listen(7525, () => {
-    console.log('http://127.0.0.1:7525/[imdb-tag]/manifest.json')
-})
+module.exports = app
