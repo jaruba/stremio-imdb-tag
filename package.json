@@ -1,0 +1,16 @@
+{
+	"name": "stremio-imdb-tag",
+	"version": "0.0.1",
+	"description": "Add-on to create a catalog from a IMDB tag.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"dependencies": {
+		"needle": "^2.2.4",
+		"express": "^4.16.4",
+		"cors": "^2.8.5",
+		"named-queue": "^2.2.1",
+		"cheerio": "1.0.0-rc.2"
+	}
+}
