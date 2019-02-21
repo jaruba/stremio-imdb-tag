@@ -37,6 +37,8 @@ app.get('/:tagId/:sort?/manifest.json', (req, res) => {
 		cloneManifest.catalogs[ij].id += '-'+cacheTag
 		cloneManifest.catalogs[ij].name = helpers.toTitleCase(req.params.tagId) + ' ' + (cat.type == 'movie' ? 'Movies' : 'Series') + ' ' + helpers.sortsTitleMap[req.params.sort || 'popular']
 	})
+	res.setHeader('Cache-Control', 'max-age=604800') // one week
+	res.setHeader('Content-Type', 'application/json')
     res.send(cloneManifest)
 })
 
@@ -159,11 +161,16 @@ app.get('/:tagId/:sort?/catalog/:type/:id.json', (req, res) => {
 		res.writeHead(500)
 		res.end(JSON.stringify({ err: 'handler error' }))
 	}
+	function respond(msg) {
+		res.setHeader('Cache-Control', 'max-age=604800') // one week
+		res.setHeader('Content-Type', 'application/json')
+		res.send(msg)
+	}
 	function fetch() {
 		queue.push({ id: req.params.tagId + '[]' + (req.params.sort || 'popular') }, (err, done) => {
 			if (done) {
 				const userData = cache[cacheTag][req.params.type]
-				res.send(JSON.stringify({ metas: userData }))
+				respond(JSON.stringify({ metas: userData }))
 			} else 
 				fail(err || 'Could not get list items')
 		})
@@ -172,7 +179,7 @@ app.get('/:tagId/:sort?/catalog/:type/:id.json', (req, res) => {
 		if (cache[cacheTag] && cache[cacheTag][req.params.type]) {
 			const userData = cache[cacheTag][req.params.type]
 			if (userData.length)
-				res.send(JSON.stringify({ metas: userData }))
+				respond(JSON.stringify({ metas: userData }))
 			else
 				fetch()
 		} else
