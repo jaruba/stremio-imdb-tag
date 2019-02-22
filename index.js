@@ -30,12 +30,13 @@ const manifest = {
 
 app.get('/:tagId/:sort?/manifest.json', (req, res) => {
 	const cacheTag = helpers.simplerText(req.params.tagId) + '[]' + (req.params.sort || 'popular')
+	const titleCase = helpers.toTitleCase(req.params.tagId.split('-').join(' '))
 	const cloneManifest = JSON.parse(JSON.stringify(manifest))
 	cloneManifest.id += cacheTag
-	cloneManifest.name = helpers.toTitleCase(req.params.tagId) + ' ' + helpers.sortsTitleMap[req.params.sort || 'popular']
+	cloneManifest.name = titleCase + ' ' + helpers.sortsTitleMap[req.params.sort || 'popular']
 	cloneManifest.catalogs.forEach((cat, ij) => {
 		cloneManifest.catalogs[ij].id += '-'+cacheTag
-		cloneManifest.catalogs[ij].name = helpers.toTitleCase(req.params.tagId) + ' ' + (cat.type == 'movie' ? 'Movies' : 'Series') + ' ' + helpers.sortsTitleMap[req.params.sort || 'popular']
+		cloneManifest.catalogs[ij].name = titleCase + ' ' + (cat.type == 'movie' ? 'Movies' : 'Series') + ' ' + helpers.sortsTitleMap[req.params.sort || 'popular']
 	})
 	res.setHeader('Cache-Control', 'max-age=604800') // one week
 	res.setHeader('Content-Type', 'application/json')
