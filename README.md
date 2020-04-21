@@ -19,7 +19,7 @@ This will print `http://127.0.0.1:7525/[imdb-tag]/manifest.json`. Add a IMDB lis
 
 ## Using remotely
 
-Use `https://imdb-tag.baby-supernode.xyz/[imdb-tag]/manifest.json`. Add a IMDB list id instead of `[imdb-list-id]` in this URL and [load the add-on in Stremio](https://github.com/jaruba/stremio-imdb-tag#install-add-on-in-stremio).
+Use `https://1fe84bc728af-imdb-tag.beamup.dev/[imdb-tag]/manifest.json`. Add a IMDB list id instead of `[imdb-list-id]` in this URL and [load the add-on in Stremio](https://github.com/jaruba/stremio-imdb-tag#install-add-on-in-stremio).
 
 
 ## What is a IMDB Tag ID
@@ -35,9 +35,9 @@ You can also sort these lists, supported sorting tags: `popular`, `new`, `rating
 
 The default sorting is: `popular`
 
-To get a list of sorted items, use: `https://imdb-tag.baby-supernode.xyz/[imdb-tag]/[sorting-tag]/manifest.json`
+To get a list of sorted items, use: `https://1fe84bc728af-imdb-tag.beamup.dev/[imdb-tag]/[sorting-tag]/manifest.json`
 
-Example: `https://imdb-tag.baby-supernode.xyz/action-hero/new/manifest.json`
+Example: `https://1fe84bc728af-imdb-tag.beamup.dev/action-hero/new/manifest.json`
 
 
 ### Install Add-on in Stremio
